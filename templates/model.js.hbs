@@ -1,0 +1,27 @@
+/**
+ *  THIS FILE IS AUTO GENERATED - SEE CONTRIBUTOR DOCUMENTATION
+ */
+
+/**
+ * @class {{className}}
+ */
+class {{className}} {
+  constructor(resourceJson, client) {
+    Object.assign(this, resourceJson);
+    this.client = client;
+  }
+
+  {{#each easyLinks}}
+  {{operationId}}({{linkedOperationArgumentBuilder this operation}}) {
+    return this.client.{{operationId}}({{linkedOperationProxyArgumentsBuilder this operation}});
+  }
+  {{/each}}
+
+  delete() {
+    return this.client.http.http(this._links.self.href, {
+      method: 'delete'
+    });
+  }
+}
+
+module.exports = {{className}};
