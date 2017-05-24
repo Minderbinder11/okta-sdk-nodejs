@@ -141,6 +141,8 @@ class ApiClient extends Client {
   deleteAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -269,15 +271,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.validityYears]
    * @description
   */
-  generateKey(appId, postBody, queryParameters) {
+  generateKey(appId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/credentials/keys/generate`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.JsonWebKeyRSAMediated(jsonRes, this));
 
   }
@@ -303,15 +303,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.targetAid]
    * @description
   */
-  cloneKey(appId, keyId, postBody, queryParameters) {
+  cloneKey(appId, keyId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/credentials/keys/${keyId}/clone`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.JsonWebKeyRSAMediated(jsonRes, this));
 
   }
@@ -343,6 +341,8 @@ class ApiClient extends Client {
   deleteGroupAppAssignment(appId, groupId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/groups/${groupId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -382,12 +382,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activateAppInstance(appId, postBody) {
+  activateAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -396,12 +395,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivateAppInstance(appId, postBody) {
+  deactivateAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -425,6 +423,8 @@ class ApiClient extends Client {
   deleteCertificate(appId, certificateId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/servercertificate/${certificateId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -622,6 +622,8 @@ class ApiClient extends Client {
   deleteAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -678,12 +680,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  resetSyncedPassword(appId, userId, postBody) {
+  resetSyncedPassword(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/credentials/cyclePassword`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -693,12 +694,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activateAppUser(appId, userId, postBody) {
+  activateAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -708,12 +708,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivateAppUser(appId, userId, postBody) {
+  deactivateAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -794,6 +793,8 @@ class ApiClient extends Client {
 
     url += queryString ? ('?' + queryString) : '';
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -827,12 +828,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activateRule(ruleId, postBody) {
+  activateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -841,12 +841,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivateRule(ruleId, postBody) {
+  deactivateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -858,6 +857,8 @@ class ApiClient extends Client {
   deleteGroup(groupId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -962,6 +963,8 @@ class ApiClient extends Client {
   removeUserFromGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -974,6 +977,7 @@ class ApiClient extends Client {
   addUserToGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
 
+    return request;
 
   }
   /**
@@ -1046,6 +1050,8 @@ class ApiClient extends Client {
   deleteKey(keyId) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys/${keyId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1092,12 +1098,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  cancelIdpTransaction(transactionId, postBody) {
+  cancelIdpTransaction(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/cancel`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -1177,6 +1182,8 @@ class ApiClient extends Client {
   deleteTrust(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1222,15 +1229,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.validityYears]
    * @description
   */
-  generateSigningKey(idpId, postBody, queryParameters) {
+  generateSigningKey(idpId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/credentials/keys/generate`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.JsonWebKeyRSAMediated(jsonRes, this));
 
   }
@@ -1254,12 +1259,10 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activateIdpAppInstance(idpId, postBody) {
+  activateIdpAppInstance(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.IdpTrust(jsonRes, this));
 
   }
@@ -1269,12 +1272,10 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivateIdpAppInstance(idpId, postBody) {
+  deactivateIdpAppInstance(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.IdpTrust(jsonRes, this));
 
   }
@@ -1288,6 +1289,7 @@ class ApiClient extends Client {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/metadata.xml`;
 
     const request = this.http.getJson(url);
+    return request;
 
   }
   /**
@@ -1318,6 +1320,8 @@ class ApiClient extends Client {
   unlinkAppUser(idpId, userId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/users/${userId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1420,6 +1424,8 @@ class ApiClient extends Client {
   deletePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1457,12 +1463,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activatePolicy(policyId, postBody) {
+  activatePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -1471,12 +1476,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivatePolicy(policyId, postBody) {
+  deactivatePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -1521,6 +1525,8 @@ class ApiClient extends Client {
   deletePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1557,12 +1563,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activatePolicyRule(policyId, ruleId, postBody) {
+  activatePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -1572,12 +1577,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  deactivatePolicyRule(policyId, ruleId, postBody) {
+  deactivatePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -1617,6 +1621,8 @@ class ApiClient extends Client {
   deleteOrgCustomSmsTemplate(templateId) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1709,6 +1715,8 @@ class ApiClient extends Client {
   deactivateOrDeleteUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1898,6 +1906,8 @@ class ApiClient extends Client {
   resetFactor(userId, userFactorId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -1958,6 +1968,7 @@ class ApiClient extends Client {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/qr/${oneTimeSessionToken}`;
 
     const request = this.http.getJson(url);
+    return request;
 
   }
   /**
@@ -1968,15 +1979,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.templateId]
    * @description
   */
-  resendCode(userId, userFactorId, postBody, queryParameters) {
+  resendCode(userId, userFactorId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/resend`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.UserFactor(jsonRes, this));
 
   }
@@ -1991,6 +2000,8 @@ class ApiClient extends Client {
   cancelFactorTransaction(userId, userFactorId, transactionId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/transactions/${transactionId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -2051,15 +2062,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.sendEmail]
    * @description
   */
-  activateUser(userId, postBody, queryParameters) {
+  activateUser(userId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/activate`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.ActivationToken(jsonRes, this));
 
   }
@@ -2069,12 +2078,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  lifecycleDeactivateUser(userId, postBody) {
+  lifecycleDeactivateUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -2084,15 +2092,13 @@ class ApiClient extends Client {
    * @param {String} [queryParams.sendEmail]
    * @description
   */
-  forgotPassword(userId, postBody, queryParameters) {
+  forgotPassword(userId, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/forgot_password`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
     return request.then(jsonRes => new models.ResetPasswordToken(jsonRes, this));
 
   }
@@ -2102,12 +2108,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  resetAllFactors(userId, postBody) {
+  resetAllFactors(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/reset_factors`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -2116,12 +2121,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  suspendUser(userId, postBody) {
+  suspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/suspend`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -2130,12 +2134,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  unlockUser(userId, postBody) {
+  unlockUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unlock`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -2144,12 +2147,11 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  unsuspendUser(userId, postBody) {
+  unsuspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unsuspend`;
 
-    const request = this.http.postJson(url, {
-      body: postBody
-    });
+    const request = this.http.postJson(url);
+    return request;
 
   }
   /**
@@ -2192,6 +2194,8 @@ class ApiClient extends Client {
   unassignRoleFromUser(userId, roleId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -2236,6 +2240,8 @@ class ApiClient extends Client {
   removeGroupTargetFromRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
   /**
@@ -2249,6 +2255,7 @@ class ApiClient extends Client {
   addGroupTargetToRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
 
+    return request;
 
   }
   /**
@@ -2260,6 +2267,8 @@ class ApiClient extends Client {
   clearUserSessions(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/sessions`;
 
+    const request = this.http.delete(url);
+    return request;
 
   }
 

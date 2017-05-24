@@ -50,13 +50,13 @@ js.process = ({spec, operations, models, handlebars}) => {
     return path;
   });
 
-  handlebars.registerHelper('argumentBuilder', (operation) => {
+  handlebars.registerHelper('operationArgumentBuilder', (operation) => {
 
     const args = [];
 
     operation.pathParams.map((arg) => args.push(arg.name));
 
-    if (operation.method === 'post') {
+    if (operation.method === 'post' && operation.bodyModel) {
       args.push('postBody');
     }
 

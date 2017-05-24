@@ -23,7 +23,7 @@ class ApiClient extends Client {
   /**
   {{jsdocBuilder this}}
   */
-  {{operationId}}({{argumentBuilder this}}) {
+  {{operationId}}({{operationArgumentBuilder this}}) {
     let url = `${this.baseUrl}{{replacePathParams path}}`;
     {{#if queryParams.length}}
     const queryString = qs.stringify(queryParameters || {});
@@ -34,16 +34,25 @@ class ApiClient extends Client {
     {{#if isArray}}
     return new Collection(this.http, url, models.{{responseModel}});
     {{else}}
+    {{#if (eq method 'delete')}}
+    const request = this.http.delete(url);
+    {{/if}}
     {{#if (eq method 'get')}}
     const request = this.http.getJson(url);
     {{/if}}
     {{#if (eq method 'post')}}
+    {{#if bodyModel}}
     const request = this.http.postJson(url, {
       body: postBody
     });
+    {{else}}
+    const request = this.http.postJson(url);
+    {{/if}}
     {{/if}}
     {{#if responseModel}}
     return request.then(jsonRes => new models.{{responseModel}}(jsonRes, this));
+    {{else}}
+    return request;
     {{/if}}
 
     {{/if}}

@@ -38,6 +38,10 @@ class Http {
     return fetch(uri, request).then(this.errorFilter);
   }
 
+  delete(uri, request) {
+    return this.http(uri, Object.assign(request || {}, { method: 'delete' })).then(res => res.json());
+  }
+
   getJson(uri, request) {
     request = request || {};
     request.headers = Object.assign({
