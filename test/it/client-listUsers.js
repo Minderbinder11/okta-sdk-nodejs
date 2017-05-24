@@ -20,3 +20,22 @@ describe('client.listUsers().each()', () => {
     });
   });
 });
+
+describe('client.listUsers().next()', () => {
+  it('should return User models', () => {
+    return client.listUsers().next().then(result => {
+      assert.instanceOf(result.value, models.User);
+    });
+  });
+  it('should allow me to visit every user', () => {
+    const collection = client.listUsers();
+    function iter() {
+      return collection.next().then(result => {
+        if (!result.done) {
+          return iter();
+        }
+      });
+    }
+    return iter();
+  });
+});

@@ -16,6 +16,34 @@ class Collection {
     this.currentUri = uri;
     this.http = http;
     this.Ctor = Ctor;
+    this.index = 0;
+    this.currentPage = [];
+  }
+
+  next() {
+    return new Promise((resolve) => {
+      if (this.currentPage.length) {
+        const result = {
+          value: this.currentPage[this.index] ? new this.Ctor(this.currentPage[this.index]) : null,
+          done: ((this.currentPage.length - 1) === this.index) && (!this.currentUri)
+        };
+        if (!result.done) {
+          this.index++;
+        }
+        return resolve(result);
+      }
+      this.getPage().then(collection => {
+        this.currentPage = collection;
+        const result = {
+          value: this.currentPage[this.index] ? new this.Ctor(this.currentPage[this.index]) : null,
+          done: ((this.currentPage.length - 1) === this.index) && (!this.currentUri)
+        };
+        if (!result.done) {
+          this.index++;
+        }
+        return resolve(result);
+      });
+    });
   }
 
   getPage() {
@@ -34,6 +62,11 @@ class Collection {
       });
   }
 
+  /**
+   * @param {Function} iterator Function to call with each resource instance
+   *
+   * @memberOf Collection
+   */
   each(iterator) {
 
     const self = this;
