@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const js = module.exports;
 
 /**
@@ -7,76 +6,26 @@ const js = module.exports;
  * to give you control over the data that handlebars uses when processing your templates
  */
 
-js.process = (spec, handlebars) => {
+js.process = ({spec, operations, models, handlebars}) => {
 
   // A map of operation Id's do their definition, so that
   // we can reference them when building out methods for x-okta-links
-  const operationIdMap = {};
 
   // Collect all the operations
-  spec.easyOperations = [];
-  for (let pathName in spec.paths) {
-    const path = spec.paths[pathName];
-    for (let methodName in path) {
-      const method = path[methodName];
-
-      // List of query params definitions for this method
-      const easyQueryParams = method.parameters.filter(param => param.in === 'query');
-
-      // List of positional path arguments for this method
-      const arguments = method.parameters.filter(param => param.in === 'path');
-
-      // Determine the return type
-      const easySuccessSchema = _.get(method, 'responses["200"].schema');
-      if (easySuccessSchema) {
-        if (easySuccessSchema.items && easySuccessSchema.items['$ref']) {
-          easySuccessSchema.items.type = _.last(easySuccessSchema.items['$ref'].split('/'));
-        } else if (easySuccessSchema['$ref']) {
-          easySuccessSchema.type = _.last(easySuccessSchema['$ref'].split('/'));
-        }
-      }
-      if (pathName.match(/v1\/users/)) {
-        // debugger
-      }
-
-      const operation = Object.assign({
-        easyQueryParams,
-        arguments,
-        easySuccessSchema,
-        path: pathName,
-        method: methodName
-      }, method);
-      operationIdMap[method.operationId] = operation;
-      spec.easyOperations.push(operation);
-    }
-  }
-
-  // make models easier to loop through
-  spec.easyModels = Object.entries(spec.definitions)
-    .map(([modelName, model]) => {
-      model.className = modelName;
-      model.easyLinks = model['x-okta-links'];
-      if (model.easyLinks) {
-        model.easyLinks.forEach(link => {
-          link.operation = operationIdMap[link.operationId];
-        });
-      }
-      return model;
-    });
 
   const templates = [];
 
   templates.push({
     src: 'api-client.js.hbs',
     dest: 'src/api-client.js',
-    context: spec
+    context: {operations}
   });
 
   // add all the models
-  for (let model of spec.easyModels) {
+  for (let model of models) {
     templates.push({
       src: 'model.js.hbs',
-      dest: `src/models/${model.className}.js`,
+      dest: `src/models/${model.modelName}.js`,
       context: model
     });
   }
@@ -84,7 +33,7 @@ js.process = (spec, handlebars) => {
   templates.push({
     src: 'model.index.js.hbs',
     dest: 'src/models/index.js',
-    context: spec
+    context: { models }
   });
 
   // Add helpers
@@ -94,7 +43,8 @@ js.process = (spec, handlebars) => {
     if (paramMatcher.test(path)) {
       const matches = path.match(paramMatcher);
       for (let match of matches) {
-        path = path.replace(match, `\${${match.slice(1)}`);
+        const param = match.slice(1);
+        path = path.replace(match, `\${${param}`);
       }
     }
     return path;
@@ -104,65 +54,51 @@ js.process = (spec, handlebars) => {
 
     const args = [];
 
-    operation.arguments.map((arg) => args.push(arg.name));
+    operation.pathParams.map((arg) => args.push(arg.name));
 
     if (operation.method === 'post') {
       args.push('postBody');
     }
 
-    if (operation.easyQueryParams.length) {
+    if (operation.queryParams.length) {
       args.push('queryParameters');
     }
 
     return args.join(', ');
   });
 
-  handlebars.registerHelper('linkedOperationArgumentBuilder', (linkDefinition, operation) => {
+  handlebars.registerHelper('modelMethodPublicArgumentBuilder', (method) => {
 
     const args = [];
 
-    const sourceProperties = linkDefinition.arguments.map(arg => arg.src);
-
-    if(!operation){
-      console.log(linkDefinition)
-    }
-
-    operation.arguments.map((arg) => {
-      if (sourceProperties.indexOf(arg.name) === -1) {
-        args.push(arg.name)
-      }
-    });
-
-    if (operation.method === 'post') {
+    if (method.operation.method === 'post') {
       args.push('postBody');
     }
 
-    if (operation.easyQueryParams.length) {
+    if (method.operation.queryParams.length) {
       args.push('queryParameters');
     }
 
     return args.join(', ');
   });
 
-  handlebars.registerHelper('linkedOperationProxyArgumentsBuilder', (linkDefinition, operation) => {
+  handlebars.registerHelper('modelMethodProxyArgumentBuilder', (method) => {
 
     const args = [];
 
-    const sourceProperties = linkDefinition.arguments.map(arg => arg.src);
-
-    operation.arguments.map((arg) => {
-      if (sourceProperties.indexOf(arg.name) > -1) {
-        args.push('this.' + arg.name);
-      } else {
-        args.push(arg.name)
-      }
+    method.arguments.forEach((argument) => {
+      method.operation.pathParams.forEach(param => {
+        if (param.name === argument.dest) {
+          args.push('this.' + argument.src);
+        }
+      });
     });
 
-    if (operation.method === 'post') {
+    if (method.operation.method === 'post') {
       args.push('postBody');
     }
 
-    if (operation.easyQueryParams.length) {
+    if (method.operation.queryParams.length) {
       args.push('queryParameters');
     }
 
@@ -172,15 +108,15 @@ js.process = (spec, handlebars) => {
   handlebars.registerHelper('jsdocBuilder', (operation) => {
     const lines = ['*'];
 
-    if (operation.arguments.length) {
-      operation.arguments.map(argument => {
+    if (operation.pathParams.length) {
+      operation.pathParams.map(argument => {
         return `   * @param ${argument.name} {String}`;
       }).forEach(line => lines.push(line));
     }
 
-    if (operation.easyQueryParams.length) {
+    if (operation.queryParams.length) {
       lines.push('   * @param {Object} queryParams Map of query parameters to add to this request');
-      operation.easyQueryParams.map((param) => {
+      operation.queryParams.map((param) => {
         return `   * @param {String} [queryParams.${param.name}]`;
       }).forEach(line => lines.push(line));
     }
@@ -190,7 +126,7 @@ js.process = (spec, handlebars) => {
       lines.push(`   * ${operation.description}`);
     }
 
-    if (!operation.easyQueryParams.length) {
+    if (!operation.queryParams.length) {
       lines.push('   * This endpoint does not have any query parameters at this time');
     }
     return lines.join('\n');

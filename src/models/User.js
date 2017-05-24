@@ -11,8 +11,11 @@ class User {
     this.client = client;
   }
 
-  listUserGroups(userId, queryParameters) {
-    return this.client.listUserGroups(userId, queryParameters);
+  getGroups(queryParameters) {
+    return this.client.listUserGroups(this.id, queryParameters);
+  }
+  activate(postBody, queryParameters) {
+    return this.client.activateUser(this.id, postBody, queryParameters);
   }
 
   delete() {

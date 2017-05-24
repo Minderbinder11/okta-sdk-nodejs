@@ -3,17 +3,17 @@
  */
 
 /**
- * @class {{className}}
+ * @class {{modelName}}
  */
-class {{className}} {
+class {{modelName}} {
   constructor(resourceJson, client) {
     Object.assign(this, resourceJson);
     this.client = client;
   }
 
-  {{#each easyLinks}}
-  {{operationId}}({{linkedOperationArgumentBuilder this operation}}) {
-    return this.client.{{operationId}}({{linkedOperationProxyArgumentsBuilder this operation}});
+  {{#each methods}}
+  {{alias}}({{modelMethodPublicArgumentBuilder this}}) {
+    return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this}});
   }
   {{/each}}
 
@@ -24,4 +24,4 @@ class {{className}} {
   }
 }
 
-module.exports = {{className}};
+module.exports = {{modelName}};
