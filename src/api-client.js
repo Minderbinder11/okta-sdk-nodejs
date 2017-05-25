@@ -98,7 +98,6 @@ class ApiClient extends Client {
   *
    * @param typeId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listSchemasForType(typeId) {
     let url = `${this.baseUrl}/api/v1/apps/user/types/${typeId}/schemas`;
@@ -110,7 +109,6 @@ class ApiClient extends Client {
    * @param typeId {String}
    * @param {Schema} schema
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   addSchemaToType(typeId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/user/types/${typeId}/schemas`;
@@ -127,7 +125,6 @@ class ApiClient extends Client {
    * @param schemaId {String}
    * @param {Schema} schema
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateSchemaByType(typeId, schemaId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/user/types/${typeId}/schemas/${schemaId}`;
@@ -142,7 +139,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}`;
@@ -173,7 +169,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param {PublicAppInstance} publicAppInstance
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateAppInstance(appId, publicAppInstance) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}`;
@@ -224,7 +219,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getConnectorSettings(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/connector`;
@@ -238,7 +232,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param {ConnectorSettings} connectorSettings
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   upsertConnectorSettings(appId, connectorSettings) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/connector`;
@@ -254,7 +247,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param {ConnectorSettings} connectorSettings
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   testConnectorSettings(appId, connectorSettings) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/connector/test`;
@@ -269,7 +261,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listAppKeys(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/credentials/keys`;
@@ -298,7 +289,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param keyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getAppKey(appId, keyId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/credentials/keys/${keyId}`;
@@ -348,7 +338,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param groupId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteGroupAppAssignment(appId, groupId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/groups/${groupId}`;
@@ -381,7 +370,6 @@ class ApiClient extends Client {
    * @param groupId {String}
    * @param {GroupAppAssignment} groupAppAssignment
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   upsertGroupAppAssignment(appId, groupId, groupAppAssignment) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/groups/${groupId}`;
@@ -396,7 +384,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activateAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/lifecycle/activate`;
@@ -409,7 +396,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivateAppInstance(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/lifecycle/deactivate`;
@@ -422,7 +408,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listCertificates(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/servercertificate`;
@@ -434,7 +419,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param certificateId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteCertificate(appId, certificateId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/servercertificate/${certificateId}`;
@@ -448,7 +432,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param certificateId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getCertificate(appId, certificateId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/servercertificate/${certificateId}`;
@@ -461,7 +444,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getImportedSchema(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/imported/schema`;
@@ -474,7 +456,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listSchemas(appId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/schemas`;
@@ -486,7 +467,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param schemaId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getSchema(appId, schemaId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/schemas/${schemaId}`;
@@ -501,7 +481,6 @@ class ApiClient extends Client {
    * @param schemaId {String}
    * @param {Schema} schema
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateSchema(appId, schemaId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/schemas/${schemaId}`;
@@ -626,7 +605,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param {AppUser} appUser
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   createAppUser(appId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users`;
@@ -642,7 +620,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
@@ -675,7 +652,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {AppUser} appUser
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateAppUser(appId, userId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
@@ -692,7 +668,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {AppUser} appUser
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   upsertAppUser(appId, userId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
@@ -708,7 +683,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   resetSyncedPassword(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/credentials/cyclePassword`;
@@ -722,7 +696,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activateAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/lifecycle/activate`;
@@ -736,7 +709,6 @@ class ApiClient extends Client {
    * @param appId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivateAppUser(appId, userId) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}/lifecycle/deactivate`;
@@ -769,7 +741,6 @@ class ApiClient extends Client {
    * @param {UserGroup} userGroup
    * @description
    * Adds a new group with &#x60;OKTA_GROUP&#x60; type to your organization.
-   * This endpoint does not have any query parameters at this time
   */
   createGroup(userGroup) {
     let url = `${this.baseUrl}/api/v1/groups`;
@@ -801,7 +772,6 @@ class ApiClient extends Client {
    * @param {GroupMembershipMediationRule} groupMembershipMediationRule
    * @description
    * Creates a group rule to dynamically add users to the specified group if they match the condition
-   * This endpoint does not have any query parameters at this time
   */
   createRule(groupMembershipMediationRule) {
     let url = `${this.baseUrl}/api/v1/groups/rules`;
@@ -833,7 +803,6 @@ class ApiClient extends Client {
   *
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}`;
@@ -847,7 +816,6 @@ class ApiClient extends Client {
    * @param ruleId {String}
    * @param {GroupMembershipMediationRule} groupMembershipMediationRule
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateRule(ruleId, groupMembershipMediationRule) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}`;
@@ -862,7 +830,6 @@ class ApiClient extends Client {
   *
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/activate`;
@@ -875,7 +842,6 @@ class ApiClient extends Client {
   *
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/deactivate`;
@@ -888,7 +854,6 @@ class ApiClient extends Client {
   *
    * @param groupId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteGroup(groupId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}`;
@@ -919,7 +884,6 @@ class ApiClient extends Client {
    * @param groupId {String}
    * @param {UserGroup} userGroup
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateGroup(groupId, userGroup) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}`;
@@ -968,7 +932,6 @@ class ApiClient extends Client {
   *
    * @param groupId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getUserGroupStats(groupId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/stats`;
@@ -998,7 +961,6 @@ class ApiClient extends Client {
    * @param groupId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   removeUserFromGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
@@ -1012,7 +974,6 @@ class ApiClient extends Client {
    * @param groupId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   addUserToGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
@@ -1042,7 +1003,6 @@ class ApiClient extends Client {
   *
    * @param {IdpTrust} idpTrust
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   createTrust(idpTrust) {
     let url = `${this.baseUrl}/api/v1/idps`;
@@ -1073,7 +1033,6 @@ class ApiClient extends Client {
   *
    * @param {JsonWebKeyRSAMediated} jsonWebKeyRsaMediated
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   createKey(jsonWebKeyRsaMediated) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys`;
@@ -1088,7 +1047,6 @@ class ApiClient extends Client {
   *
    * @param keyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteKey(keyId) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys/${keyId}`;
@@ -1101,7 +1059,6 @@ class ApiClient extends Client {
   *
    * @param keyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getIdpKey(keyId) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys/${keyId}`;
@@ -1115,7 +1072,6 @@ class ApiClient extends Client {
    * @param keyId {String}
    * @param {JsonWebKeyRSAMediated} jsonWebKeyRsaMediated
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateKey(keyId, jsonWebKeyRsaMediated) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys/${keyId}`;
@@ -1130,7 +1086,6 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getIdpTransaction(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}`;
@@ -1143,7 +1098,6 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   cancelIdpTransaction(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/cancel`;
@@ -1158,7 +1112,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {IdpTargetUser} idpTargetUser
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   confirmIdpTransactionUser(transactionId, userId, idpTargetUser) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/lifecycle/confirm/${userId}`;
@@ -1174,7 +1127,6 @@ class ApiClient extends Client {
    * @param transactionId {String}
    * @param {IdpTargetUser} idpTargetUser
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   handleIdpTransaction(transactionId, idpTargetUser) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/lifecycle/provision`;
@@ -1189,7 +1141,6 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getIdpTransactionSourceUser(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/source`;
@@ -1202,7 +1153,6 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getIdpTransactionTargetUser(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/target`;
@@ -1215,7 +1165,6 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listIdpTransactionMatchedUsers(transactionId) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/users`;
@@ -1226,7 +1175,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteTrust(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}`;
@@ -1239,7 +1187,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getTrust(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}`;
@@ -1253,7 +1200,6 @@ class ApiClient extends Client {
    * @param idpId {String}
    * @param {IdpTrust} idpTrust
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateTrust(idpId, idpTrust) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}`;
@@ -1268,7 +1214,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listSigningKeys(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/credentials/keys`;
@@ -1297,7 +1242,6 @@ class ApiClient extends Client {
    * @param idpId {String}
    * @param keyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getSigningKey(idpId, keyId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/credentials/keys/${keyId}`;
@@ -1310,7 +1254,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activateIdpAppInstance(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/lifecycle/activate`;
@@ -1323,7 +1266,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivateIdpAppInstance(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/lifecycle/deactivate`;
@@ -1336,7 +1278,6 @@ class ApiClient extends Client {
   *
    * @param idpId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getServiceProviderMetadata(idpId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/metadata.xml`;
@@ -1368,7 +1309,6 @@ class ApiClient extends Client {
    * @param idpId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   unlinkAppUser(idpId, userId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/users/${userId}`;
@@ -1382,7 +1322,6 @@ class ApiClient extends Client {
    * @param idpId {String}
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getIdpAppUser(idpId, userId) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}/users/${userId}`;
@@ -1395,7 +1334,6 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getAppInstanceProfile(appId) {
     let url = `${this.baseUrl}/api/v1/meta/schemas/apps/${appId}`;
@@ -1407,7 +1345,6 @@ class ApiClient extends Client {
   /**
   *
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getUserSchemas() {
     let url = `${this.baseUrl}/api/v1/meta/schemas/user/default`;
@@ -1420,7 +1357,6 @@ class ApiClient extends Client {
   *
    * @param {ProfileDefinition} profileDefinition
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updatePartialUserSchemas(profileDefinition) {
     let url = `${this.baseUrl}/api/v1/meta/schemas/user/default`;
@@ -1474,7 +1410,6 @@ class ApiClient extends Client {
   *
    * @param policyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deletePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}`;
@@ -1505,7 +1440,6 @@ class ApiClient extends Client {
    * @param policyId {String}
    * @param {MediationPolicy} mediationPolicy
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updatePolicy(policyId, mediationPolicy) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}`;
@@ -1520,7 +1454,6 @@ class ApiClient extends Client {
   *
    * @param policyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activatePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/lifecycle/activate`;
@@ -1533,7 +1466,6 @@ class ApiClient extends Client {
   *
    * @param policyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivatePolicy(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/lifecycle/deactivate`;
@@ -1546,7 +1478,6 @@ class ApiClient extends Client {
   *
    * @param policyId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getPolicyRules(policyId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules`;
@@ -1580,7 +1511,6 @@ class ApiClient extends Client {
    * @param policyId {String}
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deletePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}`;
@@ -1594,7 +1524,6 @@ class ApiClient extends Client {
    * @param policyId {String}
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getPolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}`;
@@ -1609,7 +1538,6 @@ class ApiClient extends Client {
    * @param ruleId {String}
    * @param {MediationPolicyRule} mediationPolicyRule
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updatePolicyRule(policyId, ruleId, mediationPolicyRule) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}`;
@@ -1625,7 +1553,6 @@ class ApiClient extends Client {
    * @param policyId {String}
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activatePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}/lifecycle/activate`;
@@ -1639,7 +1566,6 @@ class ApiClient extends Client {
    * @param policyId {String}
    * @param ruleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivatePolicyRule(policyId, ruleId) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}/lifecycle/deactivate`;
@@ -1666,7 +1592,6 @@ class ApiClient extends Client {
   *
    * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   saveOrgCustomSmsTemplate(orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms`;
@@ -1681,7 +1606,6 @@ class ApiClient extends Client {
   *
    * @param templateId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deleteOrgCustomSmsTemplate(templateId) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
@@ -1694,7 +1618,6 @@ class ApiClient extends Client {
   *
    * @param templateId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getOrgCustomSmsTemplate(templateId) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
@@ -1708,7 +1631,6 @@ class ApiClient extends Client {
    * @param templateId {String}
    * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   partialUpdateCustomSmsTemplate(templateId, orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
@@ -1724,7 +1646,6 @@ class ApiClient extends Client {
    * @param templateId {String}
    * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateCustomSmsTemplate(templateId, orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
@@ -1781,7 +1702,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   deactivateOrDeleteUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
@@ -1794,7 +1714,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
@@ -1808,7 +1727,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {User} user
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateUserWithDefaults(userId, user) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
@@ -1824,7 +1742,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {User} user
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   updateUser(userId, user) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
@@ -1873,7 +1790,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {ChangePasswordCredentials} changePasswordCredentials
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   changePassword(userId, changePasswordCredentials) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/credentials/change_password`;
@@ -1889,7 +1805,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {UserCredentials} userCredentials
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   changeRecoveryQuestion(userId, userCredentials) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/credentials/change_recovery_question`;
@@ -1924,7 +1839,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listUserFactors(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors`;
@@ -1957,7 +1871,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {FactorAuthenticationContext} factorAuthenticationContext
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   preAuth(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/authn`;
@@ -1970,7 +1883,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   listFactorsCatalog(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/catalog`;
@@ -1982,7 +1894,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param userFactorId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   resetFactor(userId, userFactorId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}`;
@@ -1996,7 +1907,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param userFactorId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getFactor(userId, userFactorId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}`;
@@ -2011,7 +1921,6 @@ class ApiClient extends Client {
    * @param userFactorId {String}
    * @param deviceId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getFactorDevice(userId, userFactorId, deviceId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/devices/${deviceId}`;
@@ -2027,7 +1936,6 @@ class ApiClient extends Client {
    * @param deviceId {String}
    * @param {FactorDeviceActivationRequest} factorDeviceActivationRequest
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   activateFactorDevice(userId, userFactorId, deviceId, factorDeviceActivationRequest) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/devices/${deviceId}/lifecycle/activate`;
@@ -2044,7 +1952,6 @@ class ApiClient extends Client {
    * @param userFactorId {String}
    * @param oneTimeSessionToken {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   generateQRCodeImage(userId, userFactorId, oneTimeSessionToken) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/qr/${oneTimeSessionToken}`;
@@ -2077,7 +1984,6 @@ class ApiClient extends Client {
    * @param userFactorId {String}
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   cancelFactorTransaction(userId, userFactorId, transactionId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/transactions/${transactionId}`;
@@ -2092,7 +1998,6 @@ class ApiClient extends Client {
    * @param userFactorId {String}
    * @param transactionId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getFactorTransactionStatus(userId, userFactorId, transactionId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/transactions/${transactionId}`;
@@ -2159,7 +2064,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   lifecycleDeactivateUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/deactivate`;
@@ -2189,7 +2093,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   resetAllFactors(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/reset_factors`;
@@ -2202,7 +2105,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   suspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/suspend`;
@@ -2215,7 +2117,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   unlockUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unlock`;
@@ -2228,7 +2129,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   unsuspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unsuspend`;
@@ -2257,7 +2157,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param {MediationRoleAssignment} mediationRoleAssignment
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   assignRoleToUser(userId, mediationRoleAssignment) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles`;
@@ -2273,7 +2172,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param roleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   unassignRoleFromUser(userId, roleId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}`;
@@ -2287,7 +2185,6 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param roleId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   getRoleForUser(userId, roleId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}`;
@@ -2319,7 +2216,6 @@ class ApiClient extends Client {
    * @param roleId {String}
    * @param groupId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   removeGroupTargetFromRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
@@ -2334,7 +2230,6 @@ class ApiClient extends Client {
    * @param roleId {String}
    * @param groupId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   addGroupTargetToRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
@@ -2347,7 +2242,6 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @description
-   * This endpoint does not have any query parameters at this time
   */
   clearUserSessions(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/sessions`;

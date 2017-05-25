@@ -135,9 +135,6 @@ js.process = ({spec, operations, models, handlebars}) => {
       lines.push(`   * ${operation.description}`);
     }
 
-    if (!operation.queryParams.length) {
-      lines.push('   * This endpoint does not have any query parameters at this time');
-    }
     return lines.join('\n');
   });
 
