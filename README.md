@@ -19,6 +19,26 @@ const client = new okta.ApiClient({
 client.listUsers().each(user => {
   console.log(user);
 });
+
+// Create a new user with password login credentials in the org
+
+const newUser = {
+  'profile': {
+    'firstName': 'Foo',
+    'lastName': 'Bar',
+    'email': 'foo@example.com',
+    'email': 'foo@example.com',
+  },
+  'credentials': {
+    'password' : {
+      'value': 'PasswordAbc123'
+    }
+  }
+};
+
+client.createUser(newUser).then((user) => {
+  console.log(user);
+});
 ```
 
 ### Contributing

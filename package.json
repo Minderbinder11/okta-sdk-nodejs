@@ -23,6 +23,7 @@
   "devDependencies": {
     "@okta/openapi": "0.1.0-alpha.7",
     "chai": "^3.5.0",
+    "faker": "^4.1.0",
     "mocha": "^3.4.1",
     "nyc": "^10.3.2"
   }
