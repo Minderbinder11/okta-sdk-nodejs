@@ -49,6 +49,15 @@ class ApiClient extends Client {
     const request = this.http.postJson(url);
     {{/if}}
     {{/if}}
+    {{#if (eq method 'put')}}
+    {{#if bodyModel}}
+    const request = this.http.putJson(url, {
+      body: {{camelCase bodyModel}}
+    });
+    {{else}}
+    const request = this.http.putJson(url);
+    {{/if}}
+    {{/if}}
     {{#if responseModel}}
     return request.then(jsonRes => new models.{{responseModel}}(jsonRes, this));
     {{else}}

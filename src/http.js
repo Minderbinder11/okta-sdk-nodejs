@@ -64,6 +64,22 @@ class Http {
     }, request.headers);
     return this.http(uri, request).then(res => res.json());
   }
+
+  put(uri, request) {
+    return this.http(uri, Object.assign(request || {}, { method: 'put' })).then(res => res.json());
+  }
+
+  putJson(uri, request) {
+    request = request || {};
+    return this.http(uri, Object.assign(request, {
+      method: 'put',
+      body: JSON.stringify(request.body),
+      headers: Object.assign(request.headers || {}, {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    })).then(res => res.json());
+  }
 }
 
 module.exports = Http;

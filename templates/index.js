@@ -57,7 +57,7 @@ js.process = ({spec, operations, models, handlebars}) => {
 
     operation.pathParams.map((arg) => args.push(arg.name));
 
-    if (operation.method === 'post' && operation.bodyModel) {
+    if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
       args.push(_.camelCase(operation.bodyModel));
     }
 

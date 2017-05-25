@@ -129,9 +129,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateSchemaByType(typeId, schemaId) {
+  updateSchemaByType(typeId, schemaId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/user/types/${typeId}/schemas/${schemaId}`;
 
+    const request = this.http.putJson(url, {
+      body: schema
+    });
     return request.then(jsonRes => new models.Schema(jsonRes, this));
 
   }
@@ -172,9 +175,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateAppInstance(appId) {
+  updateAppInstance(appId, publicAppInstance) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}`;
 
+    const request = this.http.putJson(url, {
+      body: publicAppInstance
+    });
     return request.then(jsonRes => new models.PublicAppInstance(jsonRes, this));
 
   }
@@ -377,9 +383,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  upsertGroupAppAssignment(appId, groupId) {
+  upsertGroupAppAssignment(appId, groupId, groupAppAssignment) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/groups/${groupId}`;
 
+    const request = this.http.putJson(url, {
+      body: groupAppAssignment
+    });
     return request.then(jsonRes => new models.GroupAppAssignment(jsonRes, this));
 
   }
@@ -494,9 +503,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateSchema(appId, schemaId) {
+  updateSchema(appId, schemaId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/schemas/${schemaId}`;
 
+    const request = this.http.putJson(url, {
+      body: schema
+    });
     return request.then(jsonRes => new models.Schema(jsonRes, this));
 
   }
@@ -577,12 +589,15 @@ class ApiClient extends Client {
    * @param {String} [queryParams.expand]
    * @description
   */
-  updateType(appId, typeId, queryParameters) {
+  updateType(appId, typeId, cvdAppUserProfile, queryParameters) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/user/types/${typeId}`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
+    const request = this.http.putJson(url, {
+      body: cvdAppUserProfile
+    });
     return request.then(jsonRes => new models.CVDAppUserProfile(jsonRes, this));
 
   }
@@ -679,9 +694,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  upsertAppUser(appId, userId) {
+  upsertAppUser(appId, userId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
 
+    const request = this.http.putJson(url, {
+      body: appUser
+    });
     return request.then(jsonRes => new models.AppUser(jsonRes, this));
 
   }
@@ -831,9 +849,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateRule(ruleId) {
+  updateRule(ruleId, groupMembershipMediationRule) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}`;
 
+    const request = this.http.putJson(url, {
+      body: groupMembershipMediationRule
+    });
     return request.then(jsonRes => new models.GroupMembershipMediationRule(jsonRes, this));
 
   }
@@ -900,9 +921,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateGroup(groupId) {
+  updateGroup(groupId, userGroup) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}`;
 
+    const request = this.http.putJson(url, {
+      body: userGroup
+    });
     return request.then(jsonRes => new models.UserGroup(jsonRes, this));
 
   }
@@ -993,6 +1017,7 @@ class ApiClient extends Client {
   addUserToGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
 
+    const request = this.http.putJson(url);
     return request;
 
   }
@@ -1092,9 +1117,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateKey(keyId) {
+  updateKey(keyId, jsonWebKeyRsaMediated) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys/${keyId}`;
 
+    const request = this.http.putJson(url, {
+      body: jsonWebKeyRsaMediated
+    });
     return request.then(jsonRes => new models.JsonWebKeyRSAMediated(jsonRes, this));
 
   }
@@ -1227,9 +1255,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateTrust(idpId) {
+  updateTrust(idpId, idpTrust) {
     let url = `${this.baseUrl}/api/v1/idps/${idpId}`;
 
+    const request = this.http.putJson(url, {
+      body: idpTrust
+    });
     return request.then(jsonRes => new models.IdpTrust(jsonRes, this));
 
   }
@@ -1476,9 +1507,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updatePolicy(policyId) {
+  updatePolicy(policyId, mediationPolicy) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}`;
 
+    const request = this.http.putJson(url, {
+      body: mediationPolicy
+    });
     return request.then(jsonRes => new models.MediationPolicy(jsonRes, this));
 
   }
@@ -1577,9 +1611,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updatePolicyRule(policyId, ruleId) {
+  updatePolicyRule(policyId, ruleId, mediationPolicyRule) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules/${ruleId}`;
 
+    const request = this.http.putJson(url, {
+      body: mediationPolicyRule
+    });
     return request.then(jsonRes => new models.MediationPolicyRule(jsonRes, this));
 
   }
@@ -1689,9 +1726,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateCustomSmsTemplate(templateId) {
+  updateCustomSmsTemplate(templateId, orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
 
+    const request = this.http.putJson(url, {
+      body: orgCustomSmsMediationTemplate
+    });
     return request.then(jsonRes => new models.OrgCustomSmsMediationTemplate(jsonRes, this));
 
   }
@@ -1786,9 +1826,12 @@ class ApiClient extends Client {
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateUser(userId) {
+  updateUser(userId, user) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
 
+    const request = this.http.putJson(url, {
+      body: user
+    });
     return request.then(jsonRes => new models.User(jsonRes, this));
 
   }
@@ -2296,6 +2339,7 @@ class ApiClient extends Client {
   addGroupTargetToRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
 
+    const request = this.http.putJson(url);
     return request;
 
   }
