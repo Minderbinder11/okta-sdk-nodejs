@@ -74,6 +74,14 @@ js.process = ({spec, operations, models, handlebars}) => {
 
     const operation = method.operation;
 
+    method.arguments.forEach((argument) => {
+      operation.pathParams.forEach(param => {
+        if (param.name !== argument.dest) {
+          args.push(param.name);
+        }
+      });
+    });
+
     if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
       args.push(_.camelCase(operation.bodyModel));
     }
@@ -95,6 +103,8 @@ js.process = ({spec, operations, models, handlebars}) => {
       operation.pathParams.forEach(param => {
         if (param.name === argument.dest) {
           args.push('this.' + argument.src);
+        } else {
+          args.push(param.name);
         }
       });
     });
