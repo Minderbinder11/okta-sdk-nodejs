@@ -11,7 +11,7 @@ class UserGroup {
     this.client = client;
   }
 
-  getUsers(queryParameters) {
+  listUsers(queryParameters) {
     return this.client.listGroupUsers(this.id, queryParameters);
   }
 

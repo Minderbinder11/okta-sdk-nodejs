@@ -11,11 +11,29 @@ class User {
     this.client = client;
   }
 
-  getGroups(queryParameters) {
+  listGroups(queryParameters) {
     return this.client.listUserGroups(this.id, queryParameters);
   }
   activate(queryParameters) {
     return this.client.activateUser(this.id, queryParameters);
+  }
+  deactivate() {
+    return this.client.lifecycleDeactivateUser(this.id);
+  }
+  suspend() {
+    return this.client.suspendUser(this.id);
+  }
+  unsuspend() {
+    return this.client.unsuspendUser(this.id);
+  }
+  unlock() {
+    return this.client.unlockUser(this.id);
+  }
+  forgotPassword(queryParameters) {
+    return this.client.forgotPassword(this.id, queryParameters);
+  }
+  resetFactors() {
+    return this.client.resetAllFactors(this.id);
   }
 
   delete() {

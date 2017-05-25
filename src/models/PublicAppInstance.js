@@ -11,9 +11,6 @@ class PublicAppInstance {
     this.client = client;
   }
 
-  removeFromGroup(groupId) {
-    return this.client.deleteGroupAppAssignment(this.id, groupId);
-  }
 
   delete() {
     return this.client.http.delete(this._links.self.href);
