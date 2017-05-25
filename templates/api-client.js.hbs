@@ -43,7 +43,7 @@ class ApiClient extends Client {
     {{#if (eq method 'post')}}
     {{#if bodyModel}}
     const request = this.http.postJson(url, {
-      body: postBody
+      body: {{camelCase bodyModel}}
     });
     {{else}}
     const request = this.http.postJson(url);

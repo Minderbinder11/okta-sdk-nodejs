@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const js = module.exports;
 
 /**
@@ -57,7 +58,7 @@ js.process = ({spec, operations, models, handlebars}) => {
     operation.pathParams.map((arg) => args.push(arg.name));
 
     if (operation.method === 'post' && operation.bodyModel) {
-      args.push('postBody');
+      args.push(_.camelCase(operation.bodyModel));
     }
 
     if (operation.queryParams.length) {
@@ -112,6 +113,10 @@ js.process = ({spec, operations, models, handlebars}) => {
       operation.pathParams.map(argument => {
         return `   * @param ${argument.name} {String}`;
       }).forEach(line => lines.push(line));
+    }
+
+    if (operation.bodyModel) {
+      lines.push(`   * @param {${operation.bodyModel}} ${_.camelCase(operation.bodyModel)}`);
     }
 
     if (operation.queryParams.length) {

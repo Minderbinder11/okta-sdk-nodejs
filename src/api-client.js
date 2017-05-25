@@ -41,19 +41,20 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {PublicAppInstance} publicAppInstance
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.activate]
    * @description
    * Adds a new application to your Okta organization.
   */
-  createAppInstance(postBody, queryParameters) {
+  createAppInstance(publicAppInstance, queryParameters) {
     let url = `${this.baseUrl}/api/v1/apps`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: publicAppInstance
     });
     return request.then(jsonRes => new models.PublicAppInstance(jsonRes, this));
 
@@ -107,14 +108,15 @@ class ApiClient extends Client {
   /**
   *
    * @param typeId {String}
+   * @param {Schema} schema
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  addSchemaToType(typeId, postBody) {
+  addSchemaToType(typeId, schema) {
     let url = `${this.baseUrl}/api/v1/apps/user/types/${typeId}/schemas`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: schema
     });
     return request.then(jsonRes => new models.Schema(jsonRes, this));
 
@@ -123,6 +125,7 @@ class ApiClient extends Client {
   *
    * @param typeId {String}
    * @param schemaId {String}
+   * @param {Schema} schema
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -165,6 +168,7 @@ class ApiClient extends Client {
   /**
   *
    * @param appId {String}
+   * @param {PublicAppInstance} publicAppInstance
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -226,14 +230,15 @@ class ApiClient extends Client {
   /**
   *
    * @param appId {String}
+   * @param {ConnectorSettings} connectorSettings
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  upsertConnectorSettings(appId, postBody) {
+  upsertConnectorSettings(appId, connectorSettings) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/connector`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: connectorSettings
     });
     return request.then(jsonRes => new models.ConnectorSettings(jsonRes, this));
 
@@ -241,14 +246,15 @@ class ApiClient extends Client {
   /**
   *
    * @param appId {String}
+   * @param {ConnectorSettings} connectorSettings
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  testConnectorSettings(appId, postBody) {
+  testConnectorSettings(appId, connectorSettings) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/connector/test`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: connectorSettings
     });
     return request.then(jsonRes => new models.ConnectorSettings(jsonRes, this));
 
@@ -367,6 +373,7 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @param groupId {String}
+   * @param {GroupAppAssignment} groupAppAssignment
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -483,6 +490,7 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @param schemaId {String}
+   * @param {Schema} schema
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -564,6 +572,7 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @param typeId {String}
+   * @param {CVDAppUserProfile} cvdAppUserProfile
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.expand]
    * @description
@@ -600,14 +609,15 @@ class ApiClient extends Client {
   /**
   *
    * @param appId {String}
+   * @param {AppUser} appUser
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  createAppUser(appId, postBody) {
+  createAppUser(appId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: appUser
     });
     return request.then(jsonRes => new models.AppUser(jsonRes, this));
 
@@ -648,14 +658,15 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @param userId {String}
+   * @param {AppUser} appUser
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateAppUser(appId, userId, postBody) {
+  updateAppUser(appId, userId, appUser) {
     let url = `${this.baseUrl}/api/v1/apps/${appId}/users/${userId}`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: appUser
     });
     return request.then(jsonRes => new models.AppUser(jsonRes, this));
 
@@ -664,6 +675,7 @@ class ApiClient extends Client {
   *
    * @param appId {String}
    * @param userId {String}
+   * @param {AppUser} appUser
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -736,15 +748,16 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {UserGroup} userGroup
    * @description
    * Adds a new group with &#x60;OKTA_GROUP&#x60; type to your organization.
    * This endpoint does not have any query parameters at this time
   */
-  createGroup(postBody) {
+  createGroup(userGroup) {
     let url = `${this.baseUrl}/api/v1/groups`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: userGroup
     });
     return request.then(jsonRes => new models.UserGroup(jsonRes, this));
 
@@ -767,15 +780,16 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {GroupMembershipMediationRule} groupMembershipMediationRule
    * @description
    * Creates a group rule to dynamically add users to the specified group if they match the condition
    * This endpoint does not have any query parameters at this time
   */
-  createRule(postBody) {
+  createRule(groupMembershipMediationRule) {
     let url = `${this.baseUrl}/api/v1/groups/rules`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: groupMembershipMediationRule
     });
     return request.then(jsonRes => new models.GroupMembershipMediationRule(jsonRes, this));
 
@@ -813,6 +827,7 @@ class ApiClient extends Client {
   /**
   *
    * @param ruleId {String}
+   * @param {GroupMembershipMediationRule} groupMembershipMediationRule
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -881,6 +896,7 @@ class ApiClient extends Client {
   /**
   *
    * @param groupId {String}
+   * @param {UserGroup} userGroup
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -999,14 +1015,15 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {IdpTrust} idpTrust
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  createTrust(postBody) {
+  createTrust(idpTrust) {
     let url = `${this.baseUrl}/api/v1/idps`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: idpTrust
     });
     return request.then(jsonRes => new models.IdpTrust(jsonRes, this));
 
@@ -1029,14 +1046,15 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {JsonWebKeyRSAMediated} jsonWebKeyRsaMediated
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  createKey(postBody) {
+  createKey(jsonWebKeyRsaMediated) {
     let url = `${this.baseUrl}/api/v1/idps/credentials/keys`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: jsonWebKeyRsaMediated
     });
     return request.then(jsonRes => new models.JsonWebKeyRSAMediated(jsonRes, this));
 
@@ -1070,6 +1088,7 @@ class ApiClient extends Client {
   /**
   *
    * @param keyId {String}
+   * @param {JsonWebKeyRSAMediated} jsonWebKeyRsaMediated
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1109,14 +1128,15 @@ class ApiClient extends Client {
   *
    * @param transactionId {String}
    * @param userId {String}
+   * @param {IdpTargetUser} idpTargetUser
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  confirmIdpTransactionUser(transactionId, userId, postBody) {
+  confirmIdpTransactionUser(transactionId, userId, idpTargetUser) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/lifecycle/confirm/${userId}`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: idpTargetUser
     });
     return request.then(jsonRes => new models.IdpTransaction(jsonRes, this));
 
@@ -1124,14 +1144,15 @@ class ApiClient extends Client {
   /**
   *
    * @param transactionId {String}
+   * @param {IdpTargetUser} idpTargetUser
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  handleIdpTransaction(transactionId, postBody) {
+  handleIdpTransaction(transactionId, idpTargetUser) {
     let url = `${this.baseUrl}/api/v1/idps/tx/${transactionId}/lifecycle/provision`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: idpTargetUser
     });
     return request.then(jsonRes => new models.IdpTransaction(jsonRes, this));
 
@@ -1202,6 +1223,7 @@ class ApiClient extends Client {
   /**
   *
    * @param idpId {String}
+   * @param {IdpTrust} idpTrust
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1365,14 +1387,15 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {ProfileDefinition} profileDefinition
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updatePartialUserSchemas(postBody) {
+  updatePartialUserSchemas(profileDefinition) {
     let url = `${this.baseUrl}/api/v1/meta/schemas/user/default`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: profileDefinition
     });
     return request.then(jsonRes => new models.ProfileDefinition(jsonRes, this));
 
@@ -1399,18 +1422,19 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {MediationPolicy} mediationPolicy
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.activate]
    * @description
   */
-  createPolicy(postBody, queryParameters) {
+  createPolicy(mediationPolicy, queryParameters) {
     let url = `${this.baseUrl}/api/v1/policies`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: mediationPolicy
     });
     return request.then(jsonRes => new models.MediationPolicy(jsonRes, this));
 
@@ -1448,6 +1472,7 @@ class ApiClient extends Client {
   /**
   *
    * @param policyId {String}
+   * @param {MediationPolicy} mediationPolicy
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1499,18 +1524,19 @@ class ApiClient extends Client {
   /**
   *
    * @param policyId {String}
+   * @param {MediationPolicyRule} mediationPolicyRule
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.activate]
    * @description
   */
-  addPolicyRule(policyId, postBody, queryParameters) {
+  addPolicyRule(policyId, mediationPolicyRule, queryParameters) {
     let url = `${this.baseUrl}/api/v1/policies/${policyId}/rules`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: mediationPolicyRule
     });
     return request.then(jsonRes => new models.MediationPolicyRule(jsonRes, this));
 
@@ -1547,6 +1573,7 @@ class ApiClient extends Client {
   *
    * @param policyId {String}
    * @param ruleId {String}
+   * @param {MediationPolicyRule} mediationPolicyRule
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1600,14 +1627,15 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  saveOrgCustomSmsTemplate(postBody) {
+  saveOrgCustomSmsTemplate(orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: orgCustomSmsMediationTemplate
     });
     return request.then(jsonRes => new models.OrgCustomSmsMediationTemplate(jsonRes, this));
 
@@ -1641,14 +1669,15 @@ class ApiClient extends Client {
   /**
   *
    * @param templateId {String}
+   * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  partialUpdateCustomSmsTemplate(templateId, postBody) {
+  partialUpdateCustomSmsTemplate(templateId, orgCustomSmsMediationTemplate) {
     let url = `${this.baseUrl}/api/v1/templates/sms/${templateId}`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: orgCustomSmsMediationTemplate
     });
     return request.then(jsonRes => new models.OrgCustomSmsMediationTemplate(jsonRes, this));
 
@@ -1656,6 +1685,7 @@ class ApiClient extends Client {
   /**
   *
    * @param templateId {String}
+   * @param {OrgCustomSmsMediationTemplate} orgCustomSmsMediationTemplate
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1688,20 +1718,21 @@ class ApiClient extends Client {
   }
   /**
   *
+   * @param {InputUserWithGroupIds} inputUserWithGroupIds
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.activate]
    * @param {String} [queryParams.provider]
    * @description
    * Creates a new user in your Okta organization with or without credentials.
   */
-  createUser(postBody, queryParameters) {
+  createUser(inputUserWithGroupIds, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: inputUserWithGroupIds
     });
     return request.then(jsonRes => new models.User(jsonRes, this));
 
@@ -1735,14 +1766,15 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {User} user
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  updateUserWithDefaults(userId, postBody) {
+  updateUserWithDefaults(userId, user) {
     let url = `${this.baseUrl}/api/v1/users/${userId}`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: user
     });
     return request.then(jsonRes => new models.User(jsonRes, this));
 
@@ -1750,6 +1782,7 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {User} user
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1795,14 +1828,15 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {ChangePasswordCredentials} changePasswordCredentials
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  changePassword(userId, postBody) {
+  changePassword(userId, changePasswordCredentials) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/credentials/change_password`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: changePasswordCredentials
     });
     return request.then(jsonRes => new models.UserCredentials(jsonRes, this));
 
@@ -1810,14 +1844,15 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {UserCredentials} userCredentials
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  changeRecoveryQuestion(userId, postBody) {
+  changeRecoveryQuestion(userId, userCredentials) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/credentials/change_recovery_question`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: userCredentials
     });
     return request.then(jsonRes => new models.UserCredentials(jsonRes, this));
 
@@ -1825,18 +1860,19 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {UserCredentials} userCredentials
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.sendEmail]
    * @description
   */
-  forgotPasswordWithRecoveryAnswer(userId, postBody, queryParameters) {
+  forgotPasswordWithRecoveryAnswer(userId, userCredentials, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/credentials/forgot_password`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: userCredentials
     });
     return request.then(jsonRes => new models.BaseCredentialsObject(jsonRes, this));
 
@@ -1855,19 +1891,20 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {FactorEnrollRequest} factorEnrollRequest
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.updatePhone]
    * @param {String} [queryParams.templateId]
    * @description
   */
-  enrollFactor(userId, postBody, queryParameters) {
+  enrollFactor(userId, factorEnrollRequest, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: factorEnrollRequest
     });
     return request.then(jsonRes => new models.UserFactor(jsonRes, this));
 
@@ -1875,6 +1912,7 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {FactorAuthenticationContext} factorAuthenticationContext
    * @description
    * This endpoint does not have any query parameters at this time
   */
@@ -1944,14 +1982,15 @@ class ApiClient extends Client {
    * @param userId {String}
    * @param userFactorId {String}
    * @param deviceId {String}
+   * @param {FactorDeviceActivationRequest} factorDeviceActivationRequest
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  activateFactorDevice(userId, userFactorId, deviceId, postBody) {
+  activateFactorDevice(userId, userFactorId, deviceId, factorDeviceActivationRequest) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/devices/${deviceId}/lifecycle/activate`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: factorDeviceActivationRequest
     });
     return request.then(jsonRes => new models.FactorDevice(jsonRes, this));
 
@@ -2023,18 +2062,19 @@ class ApiClient extends Client {
   *
    * @param userId {String}
    * @param userFactorId {String}
+   * @param {FactorVerificationRequest} factorVerificationRequest
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.templateId]
    * @description
   */
-  authenticate(userId, userFactorId, postBody, queryParameters) {
+  authenticate(userId, userFactorId, factorVerificationRequest, queryParameters) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/factors/${userFactorId}/verify`;
     const queryString = qs.stringify(queryParameters || {});
 
     url += queryString ? ('?' + queryString) : '';
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: factorVerificationRequest
     });
     return request.then(jsonRes => new models.FactorVerificationResponse(jsonRes, this));
 
@@ -2172,14 +2212,15 @@ class ApiClient extends Client {
   /**
   *
    * @param userId {String}
+   * @param {MediationRoleAssignment} mediationRoleAssignment
    * @description
    * This endpoint does not have any query parameters at this time
   */
-  assignRoleToUser(userId, postBody) {
+  assignRoleToUser(userId, mediationRoleAssignment) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles`;
 
     const request = this.http.postJson(url, {
-      body: postBody
+      body: mediationRoleAssignment
     });
     return request.then(jsonRes => new models.MediationRoleAssignment(jsonRes, this));
 
