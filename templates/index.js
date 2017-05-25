@@ -72,11 +72,13 @@ js.process = ({spec, operations, models, handlebars}) => {
 
     const args = [];
 
-    if (method.operation.method === 'post') {
-      args.push('postBody');
+    const operation = method.operation;
+
+    if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
+      args.push(_.camelCase(operation.bodyModel));
     }
 
-    if (method.operation.queryParams.length) {
+    if (operation.queryParams.length) {
       args.push('queryParameters');
     }
 
@@ -87,19 +89,21 @@ js.process = ({spec, operations, models, handlebars}) => {
 
     const args = [];
 
+    const operation = method.operation;
+
     method.arguments.forEach((argument) => {
-      method.operation.pathParams.forEach(param => {
+      operation.pathParams.forEach(param => {
         if (param.name === argument.dest) {
           args.push('this.' + argument.src);
         }
       });
     });
 
-    if (method.operation.method === 'post') {
-      args.push('postBody');
+    if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
+      args.push(_.camelCase(operation.bodyModel));
     }
 
-    if (method.operation.queryParams.length) {
+    if (operation.queryParams.length) {
       args.push('queryParameters');
     }
 
