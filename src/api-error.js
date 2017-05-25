@@ -20,7 +20,7 @@ function OktaApiError(url, status, responseBody) {
   this.errorId = responseBody.errorId;
   this.url = url;
   this.stack = '';
-  this.message = 'Okta HTTP ' + this.status + ' ' + this.errorCode + ' ' + this.errorSummary;
+  this.message = 'Okta HTTP ' + this.status + ' ' + this.errorCode + ' ' + this.errorSummary + (this.errorCauses ? ('. ' + this.errorCauses.map(cause => cause.errorSummary).join('. ')) : '');
 }
 
 util.inherits(OktaApiError, Error);

@@ -22,6 +22,8 @@ client.listUsers().each(user => {
 
 // Create a new user with password login credentials in the org
 
+let createdUser;
+
 const newUser = {
   'profile': {
     'firstName': 'Foo',
@@ -38,6 +40,21 @@ const newUser = {
 
 client.createUser(newUser).then((user) => {
   console.log(user);
+  createdUser = user;
+});
+
+// Create a Group
+
+let createdGroup;
+
+const newGroup = {
+  profile: {
+    name: 'Admin Users Group'
+  }
+};
+return client.createGroup(newGroup).then((group) => {
+  console.log(group);
+  createdGroup = group;
 });
 ```
 

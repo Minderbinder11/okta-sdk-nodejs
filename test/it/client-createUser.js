@@ -8,7 +8,7 @@ const client = new okta.ApiClient({
   token: process.env.OKTA_APICLIENT_TOKEN
 });
 
-describe.only('client.createUser().each()', () => {
+describe.only('client.createUser()', () => {
   let _user;
   after(() => {
     return _user.deactivate().then(() => _user.delete());
