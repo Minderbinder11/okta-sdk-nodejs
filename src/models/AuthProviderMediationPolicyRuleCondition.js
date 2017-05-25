@@ -13,9 +13,7 @@ class AuthProviderMediationPolicyRuleCondition {
 
 
   delete() {
-    return this.client.http.http(this._links.self.href, {
-      method: 'delete'
-    });
+    return this.client.http.delete(this._links.self.href);
   }
 }
 
