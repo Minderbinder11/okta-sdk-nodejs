@@ -56,6 +56,11 @@ return client.createGroup(newGroup).then((group) => {
   console.log(group);
   createdGroup = group;
 });
+
+// Add the user to that group
+createdUser.addToGroup(createdGroup.id).then(() => {
+  console.log('User has been added to group');
+});
 ```
 
 ### Contributing

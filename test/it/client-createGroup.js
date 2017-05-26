@@ -7,7 +7,7 @@ const client = new okta.ApiClient({
   token: process.env.OKTA_APICLIENT_TOKEN
 });
 
-describe.only('client.createGroup()', () => {
+describe('client.createGroup()', () => {
   let _group;
   after(() => {
     return client.deleteGroup(_group.id);

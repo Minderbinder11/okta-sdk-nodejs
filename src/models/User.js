@@ -17,6 +17,9 @@ class User {
   activate(queryParameters) {
     return this.client.activateUser(this.id, queryParameters);
   }
+  addToGroup(groupId) {
+    return this.client.addUserToGroup(groupId, this.id);
+  }
   deactivate() {
     return this.client.lifecycleDeactivateUser(this.id);
   }
