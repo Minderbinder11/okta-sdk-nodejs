@@ -17,8 +17,8 @@ class User {
   activate(queryParameters) {
     return this.client.activateUser(this.id, queryParameters);
   }
-  addToGroup(groupId) {
-    return this.client.addUserToGroup(groupId, this.id);
+  activate(queryParameters) {
+    return this.client.activateUser(this.id, queryParameters);
   }
   deactivate() {
     return this.client.lifecycleDeactivateUser(this.id);
@@ -37,6 +37,18 @@ class User {
   }
   resetFactors() {
     return this.client.resetAllFactors(this.id);
+  }
+  create(inputUserWithGroupIds, queryParameters) {
+    return this.client.createUser(inputUserWithGroupIds, queryParameters);
+  }
+  get() {
+    return this.client.getUser(this.id);
+  }
+  save() {
+    return this.client.updateUser(this.id, userId, this);
+  }
+  delete() {
+    return this.client.deactivateOrDeleteUser(this.id, userId);
   }
 
   delete() {

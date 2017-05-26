@@ -68,13 +68,16 @@ js.process = ({spec, operations, models, handlebars}) => {
     return args.join(', ');
   });
 
-  handlebars.registerHelper('modelMethodPublicArgumentBuilder', (method) => {
+  handlebars.registerHelper('modelMethodPublicArgumentBuilder', (method, modelName) => {
 
     const args = [];
 
     const operation = method.operation;
 
     method.arguments.forEach((argument) => {
+      if (argument.dest === 'body') {
+        return;
+      }
       operation.pathParams.forEach(param => {
         if (param.name !== argument.dest) {
           args.push(param.name);
@@ -82,7 +85,7 @@ js.process = ({spec, operations, models, handlebars}) => {
       });
     });
 
-    if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
+    if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel && (operation.bodyModel !== modelName)) {
       args.push(_.camelCase(operation.bodyModel));
     }
 
@@ -93,7 +96,7 @@ js.process = ({spec, operations, models, handlebars}) => {
     return args.join(', ');
   });
 
-  handlebars.registerHelper('modelMethodProxyArgumentBuilder', (method) => {
+  handlebars.registerHelper('modelMethodProxyArgumentBuilder', (method, modelName) => {
 
     const args = [];
 
@@ -110,7 +113,7 @@ js.process = ({spec, operations, models, handlebars}) => {
     });
 
     if ((operation.method === 'post' || operation.method === 'put') && operation.bodyModel) {
-      args.push(_.camelCase(operation.bodyModel));
+      args.push(operation.bodyModel === modelName ? 'this' : _.camelCase(operation.bodyModel));
     }
 
     if (operation.queryParams.length) {

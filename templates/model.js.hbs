@@ -12,8 +12,8 @@ class {{modelName}} {
   }
 
   {{#each methods}}
-  {{alias}}({{modelMethodPublicArgumentBuilder this}}) {
-    return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this}});
+  {{alias}}({{modelMethodPublicArgumentBuilder this ../modelName}}) {
+    return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this ../modelName}});
   }
   {{/each}}
 
