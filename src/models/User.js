@@ -11,11 +11,14 @@ class User {
     this.client = client;
   }
 
+  update() {
+    return this.client.updateUser(this.id, userId, this);
+  }
+  delete() {
+    return this.client.deactivateOrDeleteUser(this.id, userId);
+  }
   listGroups(queryParameters) {
     return this.client.listUserGroups(this.id, queryParameters);
-  }
-  activate(queryParameters) {
-    return this.client.activateUser(this.id, queryParameters);
   }
   activate(queryParameters) {
     return this.client.activateUser(this.id, queryParameters);
@@ -38,17 +41,8 @@ class User {
   resetFactors() {
     return this.client.resetAllFactors(this.id);
   }
-  create(inputUserWithGroupIds, queryParameters) {
-    return this.client.createUser(inputUserWithGroupIds, queryParameters);
-  }
-  get() {
-    return this.client.getUser(this.id);
-  }
-  save() {
-    return this.client.updateUser(this.id, userId, this);
-  }
-  delete() {
-    return this.client.deactivateOrDeleteUser(this.id, userId);
+  addToGroup(groupId) {
+    return this.client.addUserToGroup(groupId, this.id);
   }
 
   delete() {

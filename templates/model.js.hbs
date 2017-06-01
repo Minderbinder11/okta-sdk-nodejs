@@ -11,6 +11,18 @@ class {{modelName}} {
     this.client = client;
   }
 
+  {{#each crud}}
+  {{#if (eq alias 'update')}}
+  {{alias}}({{modelMethodPublicArgumentBuilder this ../modelName}}) {
+    return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this ../modelName}});
+  }
+  {{/if}}
+  {{#if (eq alias 'delete')}}
+  {{alias}}({{modelMethodPublicArgumentBuilder this ../modelName}}) {
+    return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this ../modelName}});
+  }
+  {{/if}}
+  {{/each}}
   {{#each methods}}
   {{alias}}({{modelMethodPublicArgumentBuilder this ../modelName}}) {
     return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this ../modelName}});
