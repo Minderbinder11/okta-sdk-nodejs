@@ -39,25 +39,11 @@ class Http {
   }
 
   delete(uri, request) {
-    return this.http(uri, Object.assign(request || {}, { method: 'delete' })).then(res => res.json());
+    return this.http(uri, Object.assign(request || {}, { method: 'delete' }));
   }
 
-  getJson(uri, request) {
+  json(uri, request) {
     request = request || {};
-    request.headers = Object.assign({
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }, request);
-    return this.http(uri, request).then(res => res.json());
-  }
-
-  postJson(uri, request) {
-    request = request || {};
-    request.method = 'post',
-    request.body = JSON.stringify(request.body);
     request.headers = Object.assign({
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -65,20 +51,37 @@ class Http {
     return this.http(uri, request).then(res => res.json());
   }
 
-  put(uri, request) {
-    return this.http(uri, Object.assign(request || {}, { method: 'put' })).then(res => res.json());
+  getJson(uri, request) {
+    request = request || {};
+    request.method = 'get';
+    return this.json(uri, request);
+  }
+
+
+  post(uri, request) {
+    request = request || {};
+    request.method = 'post';
+    return this.http(uri, request);
+  }
+
+  postJson(uri, request) {
+    request = request || {};
+    request.method = 'post',
+    request.body = JSON.stringify(request.body);
+    return this.json(uri, request);
   }
 
   putJson(uri, request) {
     request = request || {};
-    return this.http(uri, Object.assign(request, {
-      method: 'put',
-      body: JSON.stringify(request.body),
-      headers: Object.assign(request.headers || {}, {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      })
-    })).then(res => res.json());
+    request.method = 'put';
+    request.body = JSON.stringify(request.body);
+    return this.json(uri, request);
+  }
+
+  put(uri, request) {
+    request = request || {};
+    request.method = 'put';
+    return this.http(uri, request);
   }
 }
 

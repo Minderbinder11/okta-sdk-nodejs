@@ -136,7 +136,7 @@ class ApiClient extends Client {
   activateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/activate`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -148,7 +148,7 @@ class ApiClient extends Client {
   deactivateRule(ruleId) {
     let url = `${this.baseUrl}/api/v1/groups/rules/${ruleId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -246,7 +246,7 @@ class ApiClient extends Client {
   addUserToGroup(groupId, userId) {
     let url = `${this.baseUrl}/api/v1/groups/${groupId}/users/${userId}`;
 
-    const request = this.http.putJson(url);
+    const request = this.http.put(url);
     return request;
 
   }
@@ -440,7 +440,7 @@ class ApiClient extends Client {
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request.then(jsonRes => new models.ActivationToken(jsonRes, this));
 
   }
@@ -452,7 +452,7 @@ class ApiClient extends Client {
   lifecycleDeactivateUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/deactivate`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -469,7 +469,7 @@ class ApiClient extends Client {
 
     url += queryString ? ('?' + queryString) : '';
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request.then(jsonRes => new models.ResetPasswordToken(jsonRes, this));
 
   }
@@ -481,7 +481,7 @@ class ApiClient extends Client {
   resetAllFactors(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/reset_factors`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -493,7 +493,7 @@ class ApiClient extends Client {
   suspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/suspend`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -505,7 +505,7 @@ class ApiClient extends Client {
   unlockUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unlock`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -517,7 +517,7 @@ class ApiClient extends Client {
   unsuspendUser(userId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/lifecycle/unsuspend`;
 
-    const request = this.http.postJson(url);
+    const request = this.http.post(url);
     return request;
 
   }
@@ -618,7 +618,7 @@ class ApiClient extends Client {
   addGroupTargetToRole(userId, roleId, groupId) {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
 
-    const request = this.http.putJson(url);
+    const request = this.http.put(url);
     return request;
 
   }
