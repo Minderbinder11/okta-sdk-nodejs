@@ -2,13 +2,14 @@
  *  THIS FILE IS AUTO GENERATED - SEE CONTRIBUTOR DOCUMENTATION
  */
 
+var Resource = require('../resource');
+
 /**
  * @class UserGroup
  */
-class UserGroup {
+class UserGroup extends Resource{
   constructor(resourceJson, client) {
-    Object.assign(this, resourceJson);
-    this.client = client;
+    super(resourceJson, client);
   }
 
   listUsers(queryParameters) {

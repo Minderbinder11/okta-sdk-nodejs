@@ -2,13 +2,14 @@
  *  THIS FILE IS AUTO GENERATED - SEE CONTRIBUTOR DOCUMENTATION
  */
 
+var Resource = require('../resource');
+
 /**
  * @class PasswordCredential
  */
-class PasswordCredential {
+class PasswordCredential extends Resource{
   constructor(resourceJson, client) {
-    Object.assign(this, resourceJson);
-    this.client = client;
+    super(resourceJson, client);
   }
 
 
