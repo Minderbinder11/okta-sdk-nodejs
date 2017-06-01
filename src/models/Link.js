@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class Link
  */
-class Link extends Resource{
+class Link extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = Link;

@@ -1,4 +1,3 @@
-const querystring = require('querystring');
 const parseLinkHeader = require('parse-link-header');
 
 /**
@@ -99,12 +98,10 @@ class Collection {
                 const nextresource = resources[resourceIndex];
                 return sendResource(nextresource);
               });
-            }
-            else if (result === false) { // if they want to short-circuit
+            } else if (result === false) { // if they want to short-circuit
               resolve();
               return;
-            }
-            else { // if it's synchronous and not short-circuited
+            } else { // if it's synchronous and not short-circuited
               resourceIndex++;
               const nextresource = resources[resourceIndex];
               return sendResource(nextresource);

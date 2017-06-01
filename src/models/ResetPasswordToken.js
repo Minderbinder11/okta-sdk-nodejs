@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class ResetPasswordToken
  */
-class ResetPasswordToken extends Resource{
+class ResetPasswordToken extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = ResetPasswordToken;

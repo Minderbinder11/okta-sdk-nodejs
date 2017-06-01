@@ -7,7 +7,7 @@ var Resource = require('../resource');
 /**
  * @class {{modelName}}
  */
-class {{modelName}} extends Resource{
+class {{modelName}} extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
@@ -29,10 +29,6 @@ class {{modelName}} extends Resource{
     return this.client.{{operation.operationId}}({{modelMethodProxyArgumentBuilder this ../modelName}});
   }
   {{/each}}
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = {{modelName}};

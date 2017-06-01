@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class GroupMembershipMediationGroupCondition
  */
-class GroupMembershipMediationGroupCondition extends Resource{
+class GroupMembershipMediationGroupCondition extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = GroupMembershipMediationGroupCondition;

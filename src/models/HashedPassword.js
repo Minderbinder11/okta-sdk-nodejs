@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class HashedPassword
  */
-class HashedPassword extends Resource{
+class HashedPassword extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = HashedPassword;

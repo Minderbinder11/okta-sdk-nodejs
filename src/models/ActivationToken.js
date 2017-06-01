@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class ActivationToken
  */
-class ActivationToken extends Resource{
+class ActivationToken extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = ActivationToken;

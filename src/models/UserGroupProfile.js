@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class UserGroupProfile
  */
-class UserGroupProfile extends Resource{
+class UserGroupProfile extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = UserGroupProfile;

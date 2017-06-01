@@ -7,7 +7,7 @@ var Resource = require('../resource');
 /**
  * @class User
  */
-class User extends Resource{
+class User extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
@@ -44,10 +44,6 @@ class User extends Resource{
   }
   addToGroup(groupId) {
     return this.client.addUserToGroup(groupId, this.id);
-  }
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
   }
 }
 

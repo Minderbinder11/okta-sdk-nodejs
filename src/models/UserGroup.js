@@ -7,17 +7,13 @@ var Resource = require('../resource');
 /**
  * @class UserGroup
  */
-class UserGroup extends Resource{
+class UserGroup extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
   listUsers(queryParameters) {
     return this.client.listGroupUsers(this.id, queryParameters);
-  }
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
   }
 }
 

@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class LinksUnion
  */
-class LinksUnion extends Resource{
+class LinksUnion extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = LinksUnion;

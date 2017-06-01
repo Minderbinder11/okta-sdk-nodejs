@@ -7,15 +7,11 @@ var Resource = require('../resource');
 /**
  * @class UserGroupStats
  */
-class UserGroupStats extends Resource{
+class UserGroupStats extends Resource {
   constructor(resourceJson, client) {
     super(resourceJson, client);
   }
 
-
-  delete() {
-    return this.client.http.delete(this._links.self.href);
-  }
 }
 
 module.exports = UserGroupStats;
