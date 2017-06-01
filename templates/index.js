@@ -103,6 +103,10 @@ js.process = ({spec, operations, models, handlebars}) => {
     const operation = method.operation;
 
     method.arguments.forEach((argument) => {
+      if (argument.self) {
+        // These arguments indicate where to put a post body, so skip them
+        return;
+      }
       operation.pathParams.forEach(param => {
         if (param.name === argument.dest) {
           args.push('this.' + argument.src);

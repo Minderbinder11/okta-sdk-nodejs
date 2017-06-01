@@ -12,10 +12,10 @@ class User {
   }
 
   update() {
-    return this.client.updateUser(this.id, userId, this);
+    return this.client.updateUser(this.id, this);
   }
   delete() {
-    return this.client.deactivateOrDeleteUser(this.id, userId);
+    return this.client.deactivateOrDeleteUser(this.id);
   }
   listGroups(queryParameters) {
     return this.client.listUserGroups(this.id, queryParameters);
