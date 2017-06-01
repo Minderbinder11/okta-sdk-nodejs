@@ -12,7 +12,7 @@ describe('user.addToGroup(:groupId)', () => {
   before(() => {
     const newGroup = {
       profile: {
-        name: 'Some User Group'
+        name: 'Test User Group ' + faker.random.uuid()
       }
     };
     const email = faker.internet.email(null, null, 'example.com');
