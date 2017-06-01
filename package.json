@@ -21,7 +21,7 @@
     "parse-link-header": "1.0.0"
   },
   "devDependencies": {
-    "@okta/openapi": "0.1.0-beta.6",
+    "@okta/openapi": "0.1.0-beta.7",
     "chai": "^3.5.0",
     "faker": "^4.1.0",
     "lodash": "^4.17.4",
