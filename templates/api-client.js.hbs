@@ -21,8 +21,8 @@ class ApiClient extends Client {
 
 {{#each operations}}
   /**
-  {{jsdocBuilder this}}
-  */
+   {{jsdocBuilder this}}
+   */
   {{operationId}}({{operationArgumentBuilder this}}) {
     let url = `${this.baseUrl}{{replacePathParams path}}`;
     {{#if queryParams.length}}
@@ -63,11 +63,10 @@ class ApiClient extends Client {
     {{else}}
     return request;
     {{/if}}
-
     {{/if}}
   }
-{{/each}}
 
+{{/each}}
 }
 
 module.exports = ApiClient;
